@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'transfer_page.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -108,8 +110,9 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               FloatingActionButton.extended(
                 onPressed: () {},
+                icon: const Icon(Icons.add, color: Colors.white),
                 label: const Text(
-                  '\$ Manage Funds',
+                  'Funds',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -118,10 +121,12 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: Color(0xffd8c690),
               ),
               FloatingActionButton.extended(
-                onPressed: () {},
-                icon: const Icon(Icons.add, color: Color(0xffbe9e44)),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => TransferPage()));
+                },
                 label: const Text(
-                  'Transfer',
+                  '\$ Transfer',
                   style: TextStyle(
                       color: Color(0xffbe9e44),
                       fontSize: 18,
