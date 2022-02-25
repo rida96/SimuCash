@@ -68,6 +68,7 @@ class _LoginState extends State<Login> {
             ),
             TextButton(
               onPressed: () {
+                // Forgot password
                 // TODO FORGOT PASSWORD SCREEN GOES HERE
               },
               child: const Text(
@@ -83,13 +84,13 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(10)),
               child: TextButton(
                 onPressed: () {
+                  // Login Button
                   // USE THIS IN PRODUCTION
                   // Navigator.of(context).pushReplacement(
                   //     MaterialPageRoute(builder: (_) => HomePage()));
                   // USE THIS FOR TESTING
                   Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => HomePage())
-                  );
+                      context, MaterialPageRoute(builder: (_) => HomePage()));
                 },
                 child: const Text(
                   'Login',
