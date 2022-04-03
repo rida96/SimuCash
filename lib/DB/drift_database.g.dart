@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'moor_database.dart';
+part of 'drift_database.dart';
 
 // **************************************************************************
 // MoorGenerator
@@ -8,21 +8,20 @@ part of 'moor_database.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
 class Account extends DataClass implements Insertable<Account> {
-  final int userID;
+  final int cardID;
   final String username;
   final String email;
   final String pw;
   Account(
-      {required this.userID,
+      {required this.cardID,
       required this.username,
       required this.email,
       required this.pw});
-  factory Account.fromData(Map<String, dynamic> data, GeneratedDatabase db,
-      {String? prefix}) {
+  factory Account.fromData(Map<String, dynamic> data, {String? prefix}) {
     final effectivePrefix = prefix ?? '';
     return Account(
-      userID: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}user_i_d'])!,
+      cardID: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}card_i_d'])!,
       username: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}username'])!,
       email: const StringType()
@@ -34,7 +33,7 @@ class Account extends DataClass implements Insertable<Account> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['user_i_d'] = Variable<int>(userID);
+    map['card_i_d'] = Variable<int>(cardID);
     map['username'] = Variable<String>(username);
     map['email'] = Variable<String>(email);
     map['pw'] = Variable<String>(pw);
@@ -43,7 +42,7 @@ class Account extends DataClass implements Insertable<Account> {
 
   AccountsCompanion toCompanion(bool nullToAbsent) {
     return AccountsCompanion(
-      userID: Value(userID),
+      cardID: Value(cardID),
       username: Value(username),
       email: Value(email),
       pw: Value(pw),
@@ -52,9 +51,9 @@ class Account extends DataClass implements Insertable<Account> {
 
   factory Account.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
+    serializer ??= driftRuntimeOptions.defaultSerializer;
     return Account(
-      userID: serializer.fromJson<int>(json['userID']),
+      cardID: serializer.fromJson<int>(json['cardID']),
       username: serializer.fromJson<String>(json['username']),
       email: serializer.fromJson<String>(json['email']),
       pw: serializer.fromJson<String>(json['pw']),
@@ -62,9 +61,9 @@ class Account extends DataClass implements Insertable<Account> {
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
+    serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'userID': serializer.toJson<int>(userID),
+      'cardID': serializer.toJson<int>(cardID),
       'username': serializer.toJson<String>(username),
       'email': serializer.toJson<String>(email),
       'pw': serializer.toJson<String>(pw),
@@ -72,9 +71,9 @@ class Account extends DataClass implements Insertable<Account> {
   }
 
   Account copyWith(
-          {int? userID, String? username, String? email, String? pw}) =>
+          {int? cardID, String? username, String? email, String? pw}) =>
       Account(
-        userID: userID ?? this.userID,
+        cardID: cardID ?? this.cardID,
         username: username ?? this.username,
         email: email ?? this.email,
         pw: pw ?? this.pw,
@@ -82,7 +81,7 @@ class Account extends DataClass implements Insertable<Account> {
   @override
   String toString() {
     return (StringBuffer('Account(')
-          ..write('userID: $userID, ')
+          ..write('cardID: $cardID, ')
           ..write('username: $username, ')
           ..write('email: $email, ')
           ..write('pw: $pw')
@@ -91,30 +90,30 @@ class Account extends DataClass implements Insertable<Account> {
   }
 
   @override
-  int get hashCode => Object.hash(userID, username, email, pw);
+  int get hashCode => Object.hash(cardID, username, email, pw);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Account &&
-          other.userID == this.userID &&
+          other.cardID == this.cardID &&
           other.username == this.username &&
           other.email == this.email &&
           other.pw == this.pw);
 }
 
 class AccountsCompanion extends UpdateCompanion<Account> {
-  final Value<int> userID;
+  final Value<int> cardID;
   final Value<String> username;
   final Value<String> email;
   final Value<String> pw;
   const AccountsCompanion({
-    this.userID = const Value.absent(),
+    this.cardID = const Value.absent(),
     this.username = const Value.absent(),
     this.email = const Value.absent(),
     this.pw = const Value.absent(),
   });
   AccountsCompanion.insert({
-    this.userID = const Value.absent(),
+    this.cardID = const Value.absent(),
     required String username,
     required String email,
     required String pw,
@@ -122,13 +121,13 @@ class AccountsCompanion extends UpdateCompanion<Account> {
         email = Value(email),
         pw = Value(pw);
   static Insertable<Account> custom({
-    Expression<int>? userID,
+    Expression<int>? cardID,
     Expression<String>? username,
     Expression<String>? email,
     Expression<String>? pw,
   }) {
     return RawValuesInsertable({
-      if (userID != null) 'user_i_d': userID,
+      if (cardID != null) 'card_i_d': cardID,
       if (username != null) 'username': username,
       if (email != null) 'email': email,
       if (pw != null) 'pw': pw,
@@ -136,12 +135,12 @@ class AccountsCompanion extends UpdateCompanion<Account> {
   }
 
   AccountsCompanion copyWith(
-      {Value<int>? userID,
+      {Value<int>? cardID,
       Value<String>? username,
       Value<String>? email,
       Value<String>? pw}) {
     return AccountsCompanion(
-      userID: userID ?? this.userID,
+      cardID: cardID ?? this.cardID,
       username: username ?? this.username,
       email: email ?? this.email,
       pw: pw ?? this.pw,
@@ -151,8 +150,8 @@ class AccountsCompanion extends UpdateCompanion<Account> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (userID.present) {
-      map['user_i_d'] = Variable<int>(userID.value);
+    if (cardID.present) {
+      map['card_i_d'] = Variable<int>(cardID.value);
     }
     if (username.present) {
       map['username'] = Variable<String>(username.value);
@@ -169,7 +168,7 @@ class AccountsCompanion extends UpdateCompanion<Account> {
   @override
   String toString() {
     return (StringBuffer('AccountsCompanion(')
-          ..write('userID: $userID, ')
+          ..write('cardID: $cardID, ')
           ..write('username: $username, ')
           ..write('email: $email, ')
           ..write('pw: $pw')
@@ -183,19 +182,17 @@ class $AccountsTable extends Accounts with TableInfo<$AccountsTable, Account> {
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $AccountsTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _userIDMeta = const VerificationMeta('userID');
+  final VerificationMeta _cardIDMeta = const VerificationMeta('cardID');
   @override
-  late final GeneratedColumn<int?> userID = GeneratedColumn<int?>(
-      'user_i_d', aliasedName, false,
-      type: const IntType(),
-      requiredDuringInsert: false,
-      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
+  late final GeneratedColumn<int?> cardID = GeneratedColumn<int?>(
+      'card_i_d', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: false);
   final VerificationMeta _usernameMeta = const VerificationMeta('username');
   @override
   late final GeneratedColumn<String?> username =
       GeneratedColumn<String?>('username', aliasedName, false,
           additionalChecks: GeneratedColumn.checkTextLength(
-            minTextLength: 10,
+            minTextLength: 1,
           ),
           type: const StringType(),
           requiredDuringInsert: true);
@@ -214,7 +211,7 @@ class $AccountsTable extends Accounts with TableInfo<$AccountsTable, Account> {
           type: const StringType(),
           requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [userID, username, email, pw];
+  List<GeneratedColumn> get $columns => [cardID, username, email, pw];
   @override
   String get aliasedName => _alias ?? 'accounts';
   @override
@@ -224,9 +221,9 @@ class $AccountsTable extends Accounts with TableInfo<$AccountsTable, Account> {
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('user_i_d')) {
-      context.handle(_userIDMeta,
-          userID.isAcceptableOrUnknown(data['user_i_d']!, _userIDMeta));
+    if (data.containsKey('card_i_d')) {
+      context.handle(_cardIDMeta,
+          cardID.isAcceptableOrUnknown(data['card_i_d']!, _cardIDMeta));
     }
     if (data.containsKey('username')) {
       context.handle(_usernameMeta,
@@ -249,10 +246,10 @@ class $AccountsTable extends Accounts with TableInfo<$AccountsTable, Account> {
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {userID};
+  Set<GeneratedColumn> get $primaryKey => {cardID};
   @override
   Account map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return Account.fromData(data, attachedDatabase,
+    return Account.fromData(data,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
@@ -262,184 +259,11 @@ class $AccountsTable extends Accounts with TableInfo<$AccountsTable, Account> {
   }
 }
 
-class Ac extends DataClass implements Insertable<Ac> {
-  final int cardID;
-  final int userID;
-  Ac({required this.cardID, required this.userID});
-  factory Ac.fromData(Map<String, dynamic> data, GeneratedDatabase db,
-      {String? prefix}) {
-    final effectivePrefix = prefix ?? '';
-    return Ac(
-      cardID: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}card_i_d'])!,
-      userID: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}user_i_d'])!,
-    );
-  }
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['card_i_d'] = Variable<int>(cardID);
-    map['user_i_d'] = Variable<int>(userID);
-    return map;
-  }
-
-  AcsCompanion toCompanion(bool nullToAbsent) {
-    return AcsCompanion(
-      cardID: Value(cardID),
-      userID: Value(userID),
-    );
-  }
-
-  factory Ac.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
-    return Ac(
-      cardID: serializer.fromJson<int>(json['cardID']),
-      userID: serializer.fromJson<int>(json['userID']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'cardID': serializer.toJson<int>(cardID),
-      'userID': serializer.toJson<int>(userID),
-    };
-  }
-
-  Ac copyWith({int? cardID, int? userID}) => Ac(
-        cardID: cardID ?? this.cardID,
-        userID: userID ?? this.userID,
-      );
-  @override
-  String toString() {
-    return (StringBuffer('Ac(')
-          ..write('cardID: $cardID, ')
-          ..write('userID: $userID')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(cardID, userID);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is Ac &&
-          other.cardID == this.cardID &&
-          other.userID == this.userID);
-}
-
-class AcsCompanion extends UpdateCompanion<Ac> {
-  final Value<int> cardID;
-  final Value<int> userID;
-  const AcsCompanion({
-    this.cardID = const Value.absent(),
-    this.userID = const Value.absent(),
-  });
-  AcsCompanion.insert({
-    this.cardID = const Value.absent(),
-    required int userID,
-  }) : userID = Value(userID);
-  static Insertable<Ac> custom({
-    Expression<int>? cardID,
-    Expression<int>? userID,
-  }) {
-    return RawValuesInsertable({
-      if (cardID != null) 'card_i_d': cardID,
-      if (userID != null) 'user_i_d': userID,
-    });
-  }
-
-  AcsCompanion copyWith({Value<int>? cardID, Value<int>? userID}) {
-    return AcsCompanion(
-      cardID: cardID ?? this.cardID,
-      userID: userID ?? this.userID,
-    );
-  }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    if (cardID.present) {
-      map['card_i_d'] = Variable<int>(cardID.value);
-    }
-    if (userID.present) {
-      map['user_i_d'] = Variable<int>(userID.value);
-    }
-    return map;
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('AcsCompanion(')
-          ..write('cardID: $cardID, ')
-          ..write('userID: $userID')
-          ..write(')'))
-        .toString();
-  }
-}
-
-class $AcsTable extends Acs with TableInfo<$AcsTable, Ac> {
-  @override
-  final GeneratedDatabase attachedDatabase;
-  final String? _alias;
-  $AcsTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _cardIDMeta = const VerificationMeta('cardID');
-  @override
-  late final GeneratedColumn<int?> cardID = GeneratedColumn<int?>(
-      'card_i_d', aliasedName, false,
-      type: const IntType(), requiredDuringInsert: false);
-  final VerificationMeta _userIDMeta = const VerificationMeta('userID');
-  @override
-  late final GeneratedColumn<int?> userID = GeneratedColumn<int?>(
-      'user_i_d', aliasedName, false,
-      type: const IntType(), requiredDuringInsert: true);
-  @override
-  List<GeneratedColumn> get $columns => [cardID, userID];
-  @override
-  String get aliasedName => _alias ?? 'acs';
-  @override
-  String get actualTableName => 'acs';
-  @override
-  VerificationContext validateIntegrity(Insertable<Ac> instance,
-      {bool isInserting = false}) {
-    final context = VerificationContext();
-    final data = instance.toColumns(true);
-    if (data.containsKey('card_i_d')) {
-      context.handle(_cardIDMeta,
-          cardID.isAcceptableOrUnknown(data['card_i_d']!, _cardIDMeta));
-    }
-    if (data.containsKey('user_i_d')) {
-      context.handle(_userIDMeta,
-          userID.isAcceptableOrUnknown(data['user_i_d']!, _userIDMeta));
-    } else if (isInserting) {
-      context.missing(_userIDMeta);
-    }
-    return context;
-  }
-
-  @override
-  Set<GeneratedColumn> get $primaryKey => {cardID};
-  @override
-  Ac map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return Ac.fromData(data, attachedDatabase,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
-  }
-
-  @override
-  $AcsTable createAlias(String alias) {
-    return $AcsTable(attachedDatabase, alias);
-  }
-}
-
 class Transaction extends DataClass implements Insertable<Transaction> {
   final int transactionID;
   final int cardID;
   final DateTime time;
   final double amount;
-  final bool type;
   final bool isValidated;
   final bool isFinished;
   Transaction(
@@ -447,11 +271,9 @@ class Transaction extends DataClass implements Insertable<Transaction> {
       required this.cardID,
       required this.time,
       required this.amount,
-      required this.type,
       required this.isValidated,
       required this.isFinished});
-  factory Transaction.fromData(Map<String, dynamic> data, GeneratedDatabase db,
-      {String? prefix}) {
+  factory Transaction.fromData(Map<String, dynamic> data, {String? prefix}) {
     final effectivePrefix = prefix ?? '';
     return Transaction(
       transactionID: const IntType()
@@ -462,8 +284,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
           .mapFromDatabaseResponse(data['${effectivePrefix}time'])!,
       amount: const RealType()
           .mapFromDatabaseResponse(data['${effectivePrefix}amount'])!,
-      type: const BoolType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}type'])!,
       isValidated: const BoolType()
           .mapFromDatabaseResponse(data['${effectivePrefix}is_validated'])!,
       isFinished: const BoolType()
@@ -477,7 +297,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
     map['card_i_d'] = Variable<int>(cardID);
     map['time'] = Variable<DateTime>(time);
     map['amount'] = Variable<double>(amount);
-    map['type'] = Variable<bool>(type);
     map['is_validated'] = Variable<bool>(isValidated);
     map['is_finished'] = Variable<bool>(isFinished);
     return map;
@@ -489,7 +308,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
       cardID: Value(cardID),
       time: Value(time),
       amount: Value(amount),
-      type: Value(type),
       isValidated: Value(isValidated),
       isFinished: Value(isFinished),
     );
@@ -497,26 +315,24 @@ class Transaction extends DataClass implements Insertable<Transaction> {
 
   factory Transaction.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
+    serializer ??= driftRuntimeOptions.defaultSerializer;
     return Transaction(
       transactionID: serializer.fromJson<int>(json['transactionID']),
       cardID: serializer.fromJson<int>(json['cardID']),
       time: serializer.fromJson<DateTime>(json['time']),
       amount: serializer.fromJson<double>(json['amount']),
-      type: serializer.fromJson<bool>(json['type']),
       isValidated: serializer.fromJson<bool>(json['isValidated']),
       isFinished: serializer.fromJson<bool>(json['isFinished']),
     );
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
+    serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'transactionID': serializer.toJson<int>(transactionID),
       'cardID': serializer.toJson<int>(cardID),
       'time': serializer.toJson<DateTime>(time),
       'amount': serializer.toJson<double>(amount),
-      'type': serializer.toJson<bool>(type),
       'isValidated': serializer.toJson<bool>(isValidated),
       'isFinished': serializer.toJson<bool>(isFinished),
     };
@@ -527,7 +343,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
           int? cardID,
           DateTime? time,
           double? amount,
-          bool? type,
           bool? isValidated,
           bool? isFinished}) =>
       Transaction(
@@ -535,7 +350,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
         cardID: cardID ?? this.cardID,
         time: time ?? this.time,
         amount: amount ?? this.amount,
-        type: type ?? this.type,
         isValidated: isValidated ?? this.isValidated,
         isFinished: isFinished ?? this.isFinished,
       );
@@ -546,7 +360,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
           ..write('cardID: $cardID, ')
           ..write('time: $time, ')
           ..write('amount: $amount, ')
-          ..write('type: $type, ')
           ..write('isValidated: $isValidated, ')
           ..write('isFinished: $isFinished')
           ..write(')'))
@@ -554,8 +367,8 @@ class Transaction extends DataClass implements Insertable<Transaction> {
   }
 
   @override
-  int get hashCode => Object.hash(
-      transactionID, cardID, time, amount, type, isValidated, isFinished);
+  int get hashCode =>
+      Object.hash(transactionID, cardID, time, amount, isValidated, isFinished);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -564,7 +377,6 @@ class Transaction extends DataClass implements Insertable<Transaction> {
           other.cardID == this.cardID &&
           other.time == this.time &&
           other.amount == this.amount &&
-          other.type == this.type &&
           other.isValidated == this.isValidated &&
           other.isFinished == this.isFinished);
 }
@@ -574,7 +386,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
   final Value<int> cardID;
   final Value<DateTime> time;
   final Value<double> amount;
-  final Value<bool> type;
   final Value<bool> isValidated;
   final Value<bool> isFinished;
   const TransactionsCompanion({
@@ -582,7 +393,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
     this.cardID = const Value.absent(),
     this.time = const Value.absent(),
     this.amount = const Value.absent(),
-    this.type = const Value.absent(),
     this.isValidated = const Value.absent(),
     this.isFinished = const Value.absent(),
   });
@@ -591,7 +401,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
     required int cardID,
     required DateTime time,
     required double amount,
-    this.type = const Value.absent(),
     this.isValidated = const Value.absent(),
     this.isFinished = const Value.absent(),
   })  : cardID = Value(cardID),
@@ -602,7 +411,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
     Expression<int>? cardID,
     Expression<DateTime>? time,
     Expression<double>? amount,
-    Expression<bool>? type,
     Expression<bool>? isValidated,
     Expression<bool>? isFinished,
   }) {
@@ -611,7 +419,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
       if (cardID != null) 'card_i_d': cardID,
       if (time != null) 'time': time,
       if (amount != null) 'amount': amount,
-      if (type != null) 'type': type,
       if (isValidated != null) 'is_validated': isValidated,
       if (isFinished != null) 'is_finished': isFinished,
     });
@@ -622,7 +429,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
       Value<int>? cardID,
       Value<DateTime>? time,
       Value<double>? amount,
-      Value<bool>? type,
       Value<bool>? isValidated,
       Value<bool>? isFinished}) {
     return TransactionsCompanion(
@@ -630,7 +436,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
       cardID: cardID ?? this.cardID,
       time: time ?? this.time,
       amount: amount ?? this.amount,
-      type: type ?? this.type,
       isValidated: isValidated ?? this.isValidated,
       isFinished: isFinished ?? this.isFinished,
     );
@@ -651,9 +456,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
     if (amount.present) {
       map['amount'] = Variable<double>(amount.value);
     }
-    if (type.present) {
-      map['type'] = Variable<bool>(type.value);
-    }
     if (isValidated.present) {
       map['is_validated'] = Variable<bool>(isValidated.value);
     }
@@ -670,7 +472,6 @@ class TransactionsCompanion extends UpdateCompanion<Transaction> {
           ..write('cardID: $cardID, ')
           ..write('time: $time, ')
           ..write('amount: $amount, ')
-          ..write('type: $type, ')
           ..write('isValidated: $isValidated, ')
           ..write('isFinished: $isFinished')
           ..write(')'))
@@ -707,14 +508,6 @@ class $TransactionsTable extends Transactions
   late final GeneratedColumn<double?> amount = GeneratedColumn<double?>(
       'amount', aliasedName, false,
       type: const RealType(), requiredDuringInsert: true);
-  final VerificationMeta _typeMeta = const VerificationMeta('type');
-  @override
-  late final GeneratedColumn<bool?> type = GeneratedColumn<bool?>(
-      'type', aliasedName, false,
-      type: const BoolType(),
-      requiredDuringInsert: false,
-      defaultConstraints: 'CHECK (type IN (0, 1))',
-      defaultValue: const Constant(true));
   final VerificationMeta _isValidatedMeta =
       const VerificationMeta('isValidated');
   @override
@@ -734,7 +527,7 @@ class $TransactionsTable extends Transactions
       defaultValue: const Constant(false));
   @override
   List<GeneratedColumn> get $columns =>
-      [transactionID, cardID, time, amount, type, isValidated, isFinished];
+      [transactionID, cardID, time, amount, isValidated, isFinished];
   @override
   String get aliasedName => _alias ?? 'transactions';
   @override
@@ -768,10 +561,6 @@ class $TransactionsTable extends Transactions
     } else if (isInserting) {
       context.missing(_amountMeta);
     }
-    if (data.containsKey('type')) {
-      context.handle(
-          _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
-    }
     if (data.containsKey('is_validated')) {
       context.handle(
           _isValidatedMeta,
@@ -791,7 +580,7 @@ class $TransactionsTable extends Transactions
   Set<GeneratedColumn> get $primaryKey => {transactionID};
   @override
   Transaction map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return Transaction.fromData(data, attachedDatabase,
+    return Transaction.fromData(data,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
@@ -804,29 +593,9 @@ class $TransactionsTable extends Transactions
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $AccountsTable accounts = $AccountsTable(this);
-  late final $AcsTable acs = $AcsTable(this);
   late final $TransactionsTable transactions = $TransactionsTable(this);
-  late final AccountDao accountDao = AccountDao(this as AppDatabase);
-  late final TransactionDao transactionDao =
-      TransactionDao(this as AppDatabase);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [accounts, acs, transactions];
-}
-
-// **************************************************************************
-// DaoGenerator
-// **************************************************************************
-
-mixin _$AccountDaoMixin on DatabaseAccessor<AppDatabase> {
-  $AccountsTable get accounts => attachedDatabase.accounts;
-}
-mixin _$AcDaoMixin on DatabaseAccessor<AppDatabase> {
-  $AcsTable get acs => attachedDatabase.acs;
-  $TransactionsTable get transactions => attachedDatabase.transactions;
-}
-mixin _$TransactionDaoMixin on DatabaseAccessor<AppDatabase> {
-  $TransactionsTable get transactions => attachedDatabase.transactions;
+  List<DatabaseSchemaEntity> get allSchemaEntities => [accounts, transactions];
 }
