@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.simucash">
+    <uses-permission android:name="android.permission.NFC"/>
    <application
         android:label="simucash"
         android:icon="@mipmap/ic_launcher">
@@ -28,8 +29,12 @@
               android:resource="@drawable/launch_background"
               />
             <intent-filter>
+                <action:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <data android:scheme="vnd.android.nfc"
+                  android:host="ext"
+                  android:pathPrefix="/com.example:externaltype"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

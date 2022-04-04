@@ -80,6 +80,35 @@ class _TransferPageState extends State<TransferPage> {
             FloatingActionButton.extended(
               onPressed: () {
                 //TODO Logic here
+                //INITIALIZE NFC HANDLE:
+                // Check availability
+                bool isAvailable = await NfcManager.instance.isAvailable();
+
+                if (isAvailable == false) {
+                  //TODO - Do something with the NfcNotSupportedState in presentation layer
+                  //yield NfcNotSupportedState();
+                } else {
+                  // Start Session
+                  NfcManager.instance.startSession(
+                    onDiscovered: (NfcTag tag) async {
+                      var ndef = Ndef.from(tag); //Set NFC Standard
+
+                      //Obtain first record in message
+                      var record = ndef.cachedMessage.records.first;
+
+                      //Decode message record using ASCII standard
+                      var decodedRecord = ascii.decode(record);
+
+                      //TODO - UPDATE BALENCE ON CARD?
+
+                      //TODO - WRITE TRANSACTION TO DATABASE
+
+                    },
+                  );
+                }
+
+                // Stop Session
+                NfcManager.instance.stopSession();
               },
               label: const Text(
                 '\$ Send',
